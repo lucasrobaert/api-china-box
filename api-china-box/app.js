@@ -1,12 +1,11 @@
 const express = require('express')
 const mongoose = require('mongoose')
-const produtosRoutes = require('./api/routes/produtoRoutes')
-const pedidoRoutes = require('./api/routes/pedidoRoutes')
+const produtosRoutes = require('./api/routes/produtosRoutes')
+const pedidosRoutes = require('./api/routes/pedidosRoutes')
 
 
 const app = express()
 const port = process.env.PORT || 3000;
-const bdPasswords = process.env.DB_PASS 
 const dburl = `mongodb+srv://${process.env.BD_USER}:${process.env.BD_PASS}@${process.env.BD_HOST}/${process.env.BD_NAME}?retryWrites=true&w=majority`
 
 
@@ -29,7 +28,7 @@ mongoose.connect(
 app.use(express.json())
 
 app.use("/produtos", produtosRoutes)
-app.use("/pedido", pedidoRoutes)
+app.use("/pedido", pedidosRoutes)
 
 
 

@@ -1,33 +1,24 @@
-const mongoose =  require('mongoose');
+const mongoose = require("mongoose");
 
-var Produto = new mongoose.Schema(
-    {
-        name: {
-            type: String,
-            required: true,
-            unique: true,
-            index: true
-        },
-        preco: {
-            type: Number,
-            require: true
-        },
-        descricao: {
-            type: String,
-        },
-        imagem: {
-            type: String
-        },
-        imagem: {
-            type: Boolean,
-            require: true,
-            default: true
-        }
-        
-    },
-    {
-        timestamps: true,
-    }
-);
+// Declare the Schema of the Mongo model
+var produtoSchema = new mongoose.Schema({
+  nome: {
+    type: String,
+    required: true,
+    unique: true, //valor unico
+    index: true,
+  },
+  preco: {
+    type: Number,
+    required: true,
+  },
+  descricao: String,
+  imagem: String,
+  permiteAlteracao: {
+    type: Boolean,
+    default: true,
+  },
+});
 
-module.exports = mongoose.model("Produtos", Produto);
+//Export the model
+module.exports = mongoose.model("produtos", produtoSchema);
